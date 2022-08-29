@@ -1,28 +1,28 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""						
-"  <<<==============================							                     "
-"       _     _ _         _       								                      "
-"      |_|___|_| |_   _ _|_|_____ 							                      	"
-"      | |   | |  _|_| | | |     |							                      	"
-"      |_|_|_|_|_| |_|\_/|_|_|_|_|	v2							                    "
-"																                                               "
+"  <<<==============================							"
+"       _     _ _         _       								"
+"      |_|___|_| |_   _ _|_|_____ 							    "
+"      | |   | |  _|_| | | |     |							    "
+"      |_|_|_|_|_| |_|\_/|_|_|_|_|	v2							"
+"																"
 "   ===============================>>>                         	"
-"															                                               	"
-" Sections														                                        "
-" => General							 					                                      	"
-" => VIM User Interfaces										                              "
-" => Colors and Fonts										                                	"
-" => Text, tab and intend related 							                      	"
-" => Files and backups 										                              	"
-" => Plugins 												                                      	"
-"	 															                                              "
-" Editor:		    nvim									                                   	"
-" Dependencies: 	git, vim-plug 							                         	"
-" Stolen from:		https://github.com/amix/vimrc/			              	"
-"																                                               "
+"															    "
+" Sections														"
+" => General							 					    "
+" => VIM User Interfaces										"
+" => Colors and Fonts										    "
+" => Text, tab and intend related 							    "
+" => Files and backups 										    "
+" => Plugins 												    "
+"	 															"
+" Editor:		    nvim									    "
+" Dependencies: 	git, vim-plug 							    "
+" Stolen from:		https://github.com/amix/vimrc/			    "
+"																"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General 													                                      "
+" => General 													"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember "
 set history=500
@@ -39,7 +39,7 @@ command! Wsudo execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface											                              "
+" => VIM user interface											"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Avoid garbled characters in Chinese language windows OS "
 let $LANG='en'
@@ -47,25 +47,25 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-set wildmenu							                 " Turn on the Wild menu
-set number							                  	" Show the numbers
-set ruler							                   	" Always show current position
-set cmdheight=1						              	" Height of the command bar
-set hid								                    	" A buffer becomes hidden when it is abandoned 
+set wildmenu						" Turn on the Wild menu
+set number							" Show the numbers
+set ruler							" Always show current position
+set cmdheight=1						" Height of the command bar
+set hid								" A buffer becomes hidden when it is abandoned 
 
 " Configure backspace so it acts as it should act "
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-set ignorecase 							              " Ignore case when searching
-set smartcase						                	" When searching try to be smart about cases
-set hlsearch						                 	" Highlight search results 
-set incsearch					                		" Makes search act like search in modern browsers
-set lazyredraw					               		" Don't redraw while executing macros (good performance config) 
-set magic							                   	" For regular expressions turn magic on 
-set showmatch						                	" Show matching brackets when text indicator is over them 
-set mat=2								                   " How many tenths of a second to blink when matching brackets
-set foldcolumn=1					  	            " Add a bit extra margin to the left
+set ignorecase 						" Ignore case when searching
+set smartcase						" When searching try to be smart about cases
+set hlsearch						" Highlight search results 
+set incsearch					    " Makes search act like search in modern browsers
+set lazyredraw					    " Don't redraw while executing macros (good performance config) 
+set magic							" For regular expressions turn magic on 
+set showmatch						" Show matching brackets when text indicator is over them 
+set mat=2							" How many tenths of a second to blink when matching brackets
+set foldcolumn=1					" Add a bit extra margin to the left
 
 " No annoying sound on errors "
 set noerrorbells
@@ -76,7 +76,7 @@ set tm=500
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts											                                "
+" => Colors and Fonts											"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting "
 syntax enable
@@ -105,7 +105,7 @@ set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related 								                      "
+" => Text, tab and indent related 								"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs "
 set expandtab
@@ -121,14 +121,14 @@ set tabstop=2
 set lbr
 set tw=500
 
-set ai 							                     	" Auto indent
-set si 								                     " Smart indent
-set wrap 							                    " Wrap lines
+set ai 							    " Auto indent
+set si 								" Smart indent
+set wrap 							" Wrap lines
 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo								                           	"
+" => Files, backups and undo								    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git etc. "
 set nobackup
@@ -138,7 +138,7 @@ set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins 												                                      	"			
+" => Plugins 												   "			
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
 " Line Plugins "
@@ -146,20 +146,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Theme Plugins "					
-"Plug 'flazz/vim-colorschemes'		    " Collection of themes
-Plug 'sainnhe/everforest' 			       " Everforest theme
-Plug 'NLKNguyen/papercolor-theme'	  " Papercolor theme
+"Plug 'flazz/vim-colorschemes'		" Collection of themes
+Plug 'sainnhe/everforest' 			" Everforest theme
+Plug 'NLKNguyen/papercolor-theme'	" Papercolor theme
 
 " Start screen "
-Plug 'mhinz/vim-startify'			        " Fancy start screen
+Plug 'mhinz/vim-startify'			" Fancy start screen
 
 " Devel Plugins "
-Plug 'preservim/nerdtree'     	    	" File Tree
-Plug 'ryanoasis/vim-devicons' 	    	" Fancy Icons
+Plug 'preservim/nerdtree'     	    " File Tree
+Plug 'ryanoasis/vim-devicons' 	    " Fancy Icons
 
 " Programming Langs "
-Plug 'StanAngeloff/php.vim'			      " PHP
-Plug 'rust-lang/rust.vim'			        " Rust
+Plug 'StanAngeloff/php.vim'			" PHP
+Plug 'rust-lang/rust.vim'			" Rust
 
 call plug#end()
 

@@ -23,14 +23,14 @@ apt install -y ca-certificates curl gnupg lsb-release || (echo "${RED}Error inst
 echo "\n${YELLOW}Installing keyring for docker...${NC}\n"
 mkdir -p /etc/apt/keyrings
 # Downloading the keyring
-(curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg) || (echo "${RED}Error installing keyring!${NC}"; exit 1)
+(curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg) || (echo "${RED}Error installing keyring!${NC}"; exit 1)
 chmod a+r /etc/apt/keyrings/docker.gpg
 
 ### Adding docker to apt sources
 echo "\n${YELLOW}Adding docker to apt sources...${NC}\n"
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 ### Installing docker
 echo "\n${YELLOW}Installing docker...${NC}\n"

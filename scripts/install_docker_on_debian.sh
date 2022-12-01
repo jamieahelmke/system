@@ -54,7 +54,7 @@ install_yacht() {
 }
 
 
-if [ "${INSTALL_YACHT}" == true ]; then
+if $INSTALL_YACHT; then
   install_yacht 
   docker ps -a
   echo "Yacht should be up and running.\nAccess yacht over port 8000 in your browser. (Login: admin@yacht.local), Password: pass"

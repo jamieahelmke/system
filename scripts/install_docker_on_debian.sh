@@ -16,14 +16,14 @@ fi
 
 ### Installing dependencies
 echo "\n${YELLOW}Installing dependencies...${NC}\n"
-apt update || echo "${RED}Error updating!${NC}"; exit 1
-apt install -y ca-certificates curl gnupg lsb-release || echo "${RED}Error installing dependencies!${NC}"; exit 1
+apt update || (echo "${RED}Error updating!${NC}"; exit 1)
+apt install -y ca-certificates curl gnupg lsb-release || (echo "${RED}Error installing dependencies!${NC}"; exit 1)
 
 ### Installing keyring for docker
 echo "\n${YELLOW}Installing keyring for docker...${NC}\n"
 mkdir -p /etc/apt/keyrings
 # Downloading the keyring
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg || echo "${RED}Error installing keyring!${NC}"; exit 1
+(curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg) || (echo "${RED}Error installing keyring!${NC}"; exit 1)
 chmod a+r /etc/apt/keyrings/docker.gpg
 
 ### Adding docker to apt sources
@@ -34,23 +34,23 @@ echo \
 
 ### Installing docker
 echo "\n${YELLOW}Installing docker...${NC}\n"
-apt update || echo "${RED}Error updating!${NC}"; exit 1
-apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin || echo "${RED}Error installing docker!${NC}"; exit 1
+apt update || (echo "${RED}Error updating!${NC}"; exit 1)
+apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin || (echo "${RED}Error installing docker!${NC}"; exit 1)
 echo "\n${YELLOW}Enabling the docker service...${NC}\n"
-service docker start || echo "${RED}Error: Docker Service could not be started.${NC}"; exit 1
+service docker start || (echo "${RED}Error: Docker Service could not be started.${NC}"; exit 1)
 
 echo "\n${GREEN}Docker was downloaded.${NC}\n"
 
 ### Running tests
 echo "\n${YELLOW}Running final tests...${NC}\n"
 # Check if the command is executable
-command -v docker >/dev/null 2>&1 || { echo >&2 "There was an error installing docker. (Command not found)"; exit 1; }
+command -v docker >/dev/null 2>&1 || (echo >&2 "There was an error installing docker. (Command not found)"; exit 1)
 echo "\n${YELLOW}Running 'Hello World' Container...${NC}\n"
-docker run hello-world || echo "${RED}Error: 'Hello World' Container could not be started.${NC}"; exit 1
+docker run --name hello-world-container hello-world || (echo "${RED}Error: 'Hello World' Container could not be started.${NC}"; exit 1)
 
 install_yacht() {
-  docker volume create yacht || echo "${RED}Error: Volume for yacht could not be created."; exit 1
-  docker run -d -p 8000:8000 -v /var/run/docker.sock:/var/run/docker.sock -v yacht:/config --restart unless-stopped selfhostedpro/yacht || echo "${RED}Error: Yacht could not be started.${NC}"
+  docker volume create yacht || (echo "${RED}Error: Volume for yacht could not be created."; exit 1)
+  docker run -d -p 8000:8000 -v --name yacht /var/run/docker.sock:/var/run/docker.sock -v yacht:/config --restart unless-stopped selfhostedpro/yacht || echo "${RED}Error: Yacht could not be started.${NC}"
 }
 
 
@@ -59,6 +59,9 @@ if [ "${INSTALL_YACHT}" == true ]; then
   docker ps -a
   echo "Yacht should be up and running.\nAccess yacht over port 8000 in your browser. (Login: admin@yacht.local), Password: pass"
 fi
+
+echo "\n${YELLOW}Removing 'Hello World' Container...${NC}\n"
+docker rm hello-world-container
 
 echo "\n${GREEN}Installation Completed!\nDocker was successfully installed. Type 'systemctl status docker' to see further information.${NC}\n"
 exit 0;

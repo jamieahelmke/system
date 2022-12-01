@@ -50,7 +50,7 @@ docker run --name hello-world-container hello-world || (echo "${RED}Error: 'Hell
 
 install_yacht() {
   docker volume create yacht || (echo "${RED}Error: Volume for yacht could not be created."; exit 1)
-  docker run -d -p 8000:8000 -v --name yacht /var/run/docker.sock:/var/run/docker.sock -v yacht:/config --restart unless-stopped selfhostedpro/yacht || echo "${RED}Error: Yacht could not be started.${NC}"
+  docker run -d -p 8000:8000 -v /var/run/docker.sock:/var/run/docker.sock -v yacht:/config --restart unless-stopped selfhostedpro/yacht || echo "${RED}Error: Yacht could not be started.${NC}"
 }
 
 
